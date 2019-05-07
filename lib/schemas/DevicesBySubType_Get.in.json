@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "meterSubType": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "MeterSubTypeUnknown",
+                "MeterSubTypeCold",
+                "MeterSubTypeHeat",
+                "MeterSubTypeChargingStation",
+                "MeterSubTypeElectricity",
+                "MeterSubTypeWater",
+                "MeterSubTypeGas",
+                "MeterSubTypeElectricityHeat",
+                "MeterSubTypeTemperature",
+                "MeterSubTypeVirtualBattery"
+            ]
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "string"
+        },
+        "switchState": {
+            "required": true,
+            "type": "boolean"
+        },
+        "switchNumber": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

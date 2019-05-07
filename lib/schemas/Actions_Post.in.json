@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Container Class for an action to post",
+            "properties": {
+                "Actions": {
+                    "description": "List with all Actions for this device",
+                    "items": {
+                        "description": "Container class for an action item",
+                        "properties": {
+                            "ObisCode": {
+                                "description": "The ObisCode (ID) of the Action",
+                                "type": "string"
+                            },
+                            "Value": {
+                                "description": "The Value to Post",
+                                "format": "double",
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "DeviceID": {
+                    "description": "The ID of the Device",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

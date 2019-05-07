@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "formula": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

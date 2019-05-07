@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Deactivates a virtual Meter",
+            "properties": {
+                "ID": {
+                    "description": "The ID of the Virtual meter to deactivate",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

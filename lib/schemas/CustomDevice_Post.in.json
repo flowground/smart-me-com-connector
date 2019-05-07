@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Container Class for the Web API",
+            "properties": {
+                "Id": {
+                    "description": "The ID of the device",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The Name of the Device",
+                    "type": "string"
+                },
+                "Serial": {
+                    "description": "The Serial number",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "ValueDate": {
+                    "description": "The Date of the Value (in UTC). If this is null the Server Time is used.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Values": {
+                    "description": "The Values of the custom Device",
+                    "items": {
+                        "description": "Container Class for the Custom Device Values",
+                        "properties": {
+                            "Name": {
+                                "description": "The Name of the Value.",
+                                "type": "string"
+                            },
+                            "Value": {
+                                "description": "The Value",
+                                "format": "double",
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

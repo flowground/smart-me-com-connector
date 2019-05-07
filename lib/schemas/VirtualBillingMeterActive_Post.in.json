@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Actives a virtual Meter",
+            "properties": {
+                "SerialNumber": {
+                    "description": "The Serialnumber of the Meter to activate.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Container Class for the Web API",
+            "properties": {
+                "ActivePower": {
+                    "description": "The Active Power or current flow rate. In kW or m3/h",
+                    "format": "double",
+                    "type": "number"
+                },
+                "CounterReading": {
+                    "description": "The Meter Counter Reading (Total Energy used) in kWh or m3.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "CounterReadingT1": {
+                    "description": "The Meter Counter Reading Tariff 1 in kWh or m3.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "CounterReadingT2": {
+                    "description": "The Meter Counter Reading Tariff 2 in kWh or m3.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "DeviceEnergyType": {
+                    "description": "The Energy Type of this device",
+                    "enum": [
+                        "MeterTypeUnknown",
+                        "MeterTypeElectricity",
+                        "MeterTypeWater",
+                        "MeterTypeGas",
+                        "MeterTypeHeat",
+                        "MeterTypeHCA",
+                        "MeterTypeAllMeters",
+                        "MeterTypeTemperature",
+                        "MeterTypeMBusGateway",
+                        "MeterTypeRS485Gateway",
+                        "MeterTypeCustomDevice",
+                        "MeterTypeCompressedAir",
+                        "MeterTypeSolarLog",
+                        "MeterTypeVirtualMeter"
+                    ],
+                    "type": "string"
+                },
+                "Id": {
+                    "description": "The ID of the device",
+                    "type": "string"
+                },
+                "MeterSubType": {
+                    "description": "The Sub Type of this Meter.",
+                    "enum": [
+                        "MeterSubTypeUnknown",
+                        "MeterSubTypeCold",
+                        "MeterSubTypeHeat",
+                        "MeterSubTypeChargingStation",
+                        "MeterSubTypeElectricity",
+                        "MeterSubTypeWater",
+                        "MeterSubTypeGas",
+                        "MeterSubTypeElectricityHeat",
+                        "MeterSubTypeTemperature",
+                        "MeterSubTypeVirtualBattery"
+                    ],
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The Name of the Device",
+                    "type": "string"
+                },
+                "Serial": {
+                    "description": "The Serial number",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "Temperature": {
+                    "description": "The Temperature (in degree celsius)",
+                    "format": "double",
+                    "type": "number"
+                },
+                "ValueDate": {
+                    "description": "The Date of the Value (in UTC). If this is null the Server Time is used.",
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

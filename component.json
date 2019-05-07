@@ -1,0 +1,782 @@
+{
+    "title": "smart-me",
+    "description": "With the smart-me REST API you get Access to all your devices in the smart-me Cloud and you can add your own devices. So it's a easy way to add the smart-me Cloud support to your Hardware or Software Product.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/smart-me.com/v1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://smart-me.com:443/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "username": {
+                "label": "Username (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Basic HTTP Authentication"
+            },
+            "password": {
+                "label": "Password (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Basic HTTP Authentication"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "AccessToken_Put": {
+            "main": "./lib/actions/AccessToken_Put.js",
+            "title": "Creates a Access Token to write on a Card (e.g. NFC)",
+            "description": "Creates a Access Token to write on a Card (e.g. NFC)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AccessToken_Put.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Actions_Post": {
+            "main": "./lib/actions/Actions_Post.js",
+            "title": "Set an action for the specified device.",
+            "description": "Set an action for the specified device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Actions_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Actions_Get": {
+            "main": "./lib/actions/Actions_Get.js",
+            "title": "Gets all available Actions of a Device",
+            "description": "Gets all available Actions of a Device",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Actions_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AdditionalDeviceInformation_Get": {
+            "main": "./lib/actions/AdditionalDeviceInformation_Get.js",
+            "title": "Gets the additional information (e.g. Firmware Version) about a device.",
+            "description": "Gets the additional information (e.g. Firmware Version) about a device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AdditionalDeviceInformation_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_CustomDevice": {
+            "main": "./lib/actions/get_api_CustomDevice.js",
+            "title": "Gets all Custom Devices",
+            "description": "Gets all Devices",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_CustomDevice.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomDevice_Post": {
+            "main": "./lib/actions/CustomDevice_Post.js",
+            "title": "Creates or updates a Custom Device or updates it's values.",
+            "description": "Creates or updates a Custom Device or updates it's values.\r\n            A Custom Device can be any device that like to add some measurement values to the smart-me Cloud.\r\n            Only use a custom device for all non meters.\r\n            For a new device leave the ID empty. To create a device you have to set the DeviceEnergyType.\r\n            To update values, add the ID of the device and the values you like to set.  (See the Data Type Model for more Information)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomDevice_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_CustomDevice__id_": {
+            "main": "./lib/actions/get_api_CustomDevice__id_.js",
+            "title": "Gets a Custom Device by it's ID",
+            "description": "Gets a Device by it's ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_CustomDevice__id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeviceBySerial_Get": {
+            "main": "./lib/actions/DeviceBySerial_Get.js",
+            "title": "Gets a Device by it's Serial Number. The Serial is the part before the \"-\".",
+            "description": "Gets a Device by it's Serial Number. The Serial is the part before the \"-\".",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeviceBySerial_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_Devices": {
+            "main": "./lib/actions/get_api_Devices.js",
+            "title": "Gets all Devices",
+            "description": "Gets all Devices",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_Devices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Devices_Post": {
+            "main": "./lib/actions/Devices_Post.js",
+            "title": "Creates or updates a Device or updates it's values.",
+            "description": "Creates or updates a Device or updates it's values. \r\n            For a new device leave the ID empty. To create a device you have to set the DeviceEnergyType.\r\n            To update values, add the ID of the device and the values you like to set.  (See the Data Type Model for more Information)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Devices_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_Devices__id_": {
+            "main": "./lib/actions/get_api_Devices__id_.js",
+            "title": "Gets a Device by it's ID",
+            "description": "Gets a Device by it's ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_Devices__id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Devices_Put": {
+            "main": "./lib/actions/Devices_Put.js",
+            "title": "Updates the On/Off Switch on a device. \r\n            For new implementations please use the \"actions\" command",
+            "description": "Updates the On/Off Switch on a device\r\n            For new implementations please use the \"actions\" command",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Devices_Put.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DevicesByEnergy_Get": {
+            "main": "./lib/actions/DevicesByEnergy_Get.js",
+            "title": "Gets all Devices for an Energy Type",
+            "description": "Gets all Devices for an Energy Type",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DevicesByEnergy_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DevicesBySubType_Get": {
+            "main": "./lib/actions/DevicesBySubType_Get.js",
+            "title": "Gets all Devices by it's Sub Type (e.g. E-Charging Station)",
+            "description": "Gets all Devices by it's Sub Type (e.g. E-Charging Station)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DevicesBySubType_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Folder_Get": {
+            "main": "./lib/actions/Folder_Get.js",
+            "title": "Gets the Values for a folder or a meter",
+            "description": "Gets the Values for a folder or a meter",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Folder_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MBus_Post": {
+            "main": "./lib/actions/MBus_Post.js",
+            "title": "M-BUS API: Adds data of a M-BUS Meter to the smart-me Cloud.\r\n            Just send us the M-BUS Telegram (RSP_UD) and we will do the Rest.",
+            "description": "M-BUS API: Adds data of a M-BUS Meter to the smart-me Cloud.\r\n            Just send us the M-BUS Telegram (RSP_UD) and we will do the Rest.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MBus_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MeterFolderInformation_Post": {
+            "main": "./lib/actions/MeterFolderInformation_Post.js",
+            "title": "Sets the Name of a Meter or a Folder",
+            "description": "Sets the Name of a Meter or a Folder",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MeterFolderInformation_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MeterFolderInformation_Get": {
+            "main": "./lib/actions/MeterFolderInformation_Get.js",
+            "title": "Beta: Gets the General Information for a Meter or a Folder",
+            "description": "Beta: Gets the General Information for a Meter or a Folder",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MeterFolderInformation_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MeterValues_Get": {
+            "main": "./lib/actions/MeterValues_Get.js",
+            "title": "Gets the Values for a Meter at a given Date. \r\n            The first Value found before the given Date is returned.",
+            "description": "Gets the Values for a Meter at a given Date. The first Value found before the given Date is returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MeterValues_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RegisterForRealtimeApi_Get": {
+            "main": "./lib/actions/RegisterForRealtimeApi_Get.js",
+            "title": "Gets all registrations for the Realtime API.",
+            "description": "Gets all registrations for the Realtime API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RegisterForRealtimeApi_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RegisterForRealtimeApi_Post": {
+            "main": "./lib/actions/RegisterForRealtimeApi_Post.js",
+            "title": "Creates a new registration for the realtime API. The Realtime API sends you the data of the registred devices as soon as we have them on the cloud.\r\n             More Information about the realtime API: https://www.smart-me.com/Description/api/realtimeapi.aspx",
+            "description": "Creates a new registration for the realtime API. The Realtime API sends you the data of the registred devices as soon as we have them on the cloud. More Information about the realtime API: https://www.smart-me.com/Description/api/realtimeapi.aspx",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RegisterForRealtimeApi_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RegisterForRealtimeApi_Delete": {
+            "main": "./lib/actions/RegisterForRealtimeApi_Delete.js",
+            "title": "Deletes a realtime API registration.",
+            "description": "Deletes a realtime API registration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RegisterForRealtimeApi_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartMeDeviceConfiguration_Post": {
+            "main": "./lib/actions/SmartMeDeviceConfiguration_Post.js",
+            "title": "Sets the configuration of a smart-me device. The device needs to be online.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartMeDeviceConfiguration_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartMeDeviceConfiguration_Get": {
+            "main": "./lib/actions/SmartMeDeviceConfiguration_Get.js",
+            "title": "Gets the configuration of a smart-me device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartMeDeviceConfiguration_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "User_Get": {
+            "main": "./lib/actions/User_Get.js",
+            "title": "Gets the informations for the user.",
+            "description": "Gets the informations for the user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/User_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Values_Get": {
+            "main": "./lib/actions/Values_Get.js",
+            "title": "Gets all (last) values of a device",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Values_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ValuesInPast_Get": {
+            "main": "./lib/actions/ValuesInPast_Get.js",
+            "title": "Gets all (last) values of a device\r\n            The first Value found before the given Date is returned.",
+            "description": "Gets the Values for a device at a given Date. The first Value found before the given Date is returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ValuesInPast_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ValuesInPastMultiple_Get": {
+            "main": "./lib/actions/ValuesInPastMultiple_Get.js",
+            "title": "Gets multiple values of a device. This call needs a smart-me professional licence.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ValuesInPastMultiple_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualBillingMeterActive_Get": {
+            "main": "./lib/actions/VirtualBillingMeterActive_Get.js",
+            "title": "Beta: Gets all active virtual meters",
+            "description": "Beta: Gets all active virtual meters.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualBillingMeterActive_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualBillingMeterActive_Post": {
+            "main": "./lib/actions/VirtualBillingMeterActive_Post.js",
+            "title": "Beta: Virtual Meter API: Activates a Meter and add the Consumption to a Virtual Meter assosiated with the User.",
+            "description": "Beta: Virtual Meter API: Activates a Meter and add the Consumption to a Virtual Meter assosiated with the User.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualBillingMeterActive_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualBillingMeterDeactivate_Post": {
+            "main": "./lib/actions/VirtualBillingMeterDeactivate_Post.js",
+            "title": "Beta: Virtual Meter API: Deactivates a Virtual Meter.",
+            "description": "Beta: Virtual Meter API: Deactivates a Virtual Meter.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualBillingMeterDeactivate_Post.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualBillingMeters_Get": {
+            "main": "./lib/actions/VirtualBillingMeters_Get.js",
+            "title": "Beta: Gets all Meters available to activate as a Virtual Meter.",
+            "description": "Beta: Gets all Meters available to activate as a Virtual Meter.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualBillingMeters_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMeterCalculateFormula_Get": {
+            "main": "./lib/actions/VirtualMeterCalculateFormula_Get.js",
+            "title": "Calculates a virtual meter from a formula. \r\n            A meter is coded as ID(\"METERID\")",
+            "description": "Calculates a virtual meter from a formula.\r\n            \r\n            A meter is coded as ID(\"METERID\")\r\n            Ariphmetical operators:\r\n             ()  parentheses;  \r\n             +   plus (a + b); \r\n             -  minus (a - b); \r\n             *  multiplycation symbol (a * b); \r\n             /  divide symbol (a / b); \r\n            Example: (ID(\"63ac09cb-4e5f-4f3e-bd27-ad8c30bdfc0c\") + ID(\"0209555e-9dc4-4e84-a166-a864488b4b12\")) * 2",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMeterCalculateFormula_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_VirtualTariff": {
+            "main": "./lib/actions/get_api_VirtualTariff.js",
+            "title": "Gets all Virtual Tariffs of a user",
+            "description": "Gets all Virtual Tariffs of a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_VirtualTariff.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_api_VirtualTariff__id_": {
+            "main": "./lib/actions/get_api_VirtualTariff__id_.js",
+            "title": "Gets all virtual tariffs of a folder",
+            "description": "Gets all virtual tariffs of a folder",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_api_VirtualTariff__id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualTariffConsumption_Get": {
+            "main": "./lib/actions/VirtualTariffConsumption_Get.js",
+            "title": "Gets the consumption of a folder with a virtuall tariffs.",
+            "description": "Gets the consumption of a folder with a virtuall tariffs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualTariffConsumption_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

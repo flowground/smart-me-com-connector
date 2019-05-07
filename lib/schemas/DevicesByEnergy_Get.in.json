@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "meterEnergyType": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "MeterTypeUnknown",
+                "MeterTypeElectricity",
+                "MeterTypeWater",
+                "MeterTypeGas",
+                "MeterTypeHeat",
+                "MeterTypeHCA",
+                "MeterTypeAllMeters",
+                "MeterTypeTemperature",
+                "MeterTypeMBusGateway",
+                "MeterTypeRS485Gateway",
+                "MeterTypeCustomDevice",
+                "MeterTypeCompressedAir",
+                "MeterTypeSolarLog",
+                "MeterTypeVirtualMeter"
+            ]
+        }
+    }
+}

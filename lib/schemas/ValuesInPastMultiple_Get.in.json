@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "string"
+        },
+        "startDate": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "endDate": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "interval": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

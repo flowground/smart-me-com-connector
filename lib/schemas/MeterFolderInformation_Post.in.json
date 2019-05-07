@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Container for a Meter or Folder Information to Post",
+            "properties": {
+                "Id": {
+                    "description": "The ID of the device or folder",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "Name of the Meter or Folder",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
